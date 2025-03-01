@@ -4,7 +4,6 @@
 
 int main()
 {
-    //freopen("C:\\New folder\\input.txt","r",stdin);
     float a,b,c;
     float delta,x1,x2,x;
     scanf("%f %f %f",&a,&b,&c);

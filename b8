@@ -5,7 +5,7 @@
 int main()
 {
     double a,b,c,p,v,s;
-    printf("nhap 3 so:");
+    printf("Nhap 3 so:");
     scanf("%lf %lf %lf",&a,&b,&c);
     v=a+b+c;
     p=v*(v-2*a)*(v-2*b)*(v-2*c);

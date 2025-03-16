@@ -15,21 +15,24 @@ typedef struct
 
 void nhap(sinh_vien *sv)
 {
+    printf("_____________________\n");
     printf("Nhap ma sinh vien:");
     gets(sv->ma_sv);
-    printf("Nhap ho va ten:   ");
+    printf("Nhap ho va ten:");
     gets(sv->ho_ten);
-    printf("Nhap nam snh:     ");
+    printf("Nhap nam snh:");
     scanf("%d",&sv->nam_sinh);
     getchar();
-    printf("Nhap que quan:    ");
+    printf("Nhap que quan:");
     gets(sv->que_quan);
-    printf("Nhap gioi tinh:   ");
+    printf("Nhap gioi tinh:");
     gets(sv->gt);
+    printf("_____________________\n");
 }
 
 void out(sinh_vien *sv)
 {
+    printf("=====================\n");
     printf("Ma sinh vien:");
     printf("%s\n",sv->ma_sv);
     printf("Ho va ten:");
@@ -40,6 +43,7 @@ void out(sinh_vien *sv)
     printf("%s\n",sv->que_quan);
     printf("Gioi tinh:");
     printf("%s\n",sv->gt);
+    printf("=====================\n");
 }
 
 int main()
@@ -48,7 +52,7 @@ int main()
     int a,n=1,i=0;
     sinh_vien *sv;
     sv =(sinh_vien*)malloc(10*sizeof(sinh_vien));
-    printf("Nhap 1 de nhap.\nNhap 2 de in.\nNhap 0 de ket thuc.\n====Lua chon:");
+    printf("Nhap 1 de nhap.\nNhap 2 de in.\nNhap 0 de ket thuc.\n===================Lua chon:");
     scanf("%d",&a);
     getchar();
     while(a!=0)
@@ -61,7 +65,7 @@ int main()
         {
             out(&sv[i]);
         }
-        printf("====Nhap lua chon: ");
+        printf("Nhap lua chon: ");
         scanf("%d",&a);
         getchar();
         if(a==1)

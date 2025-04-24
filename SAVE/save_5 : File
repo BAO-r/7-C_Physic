@@ -1,0 +1,175 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <malloc.h>
+#include <string.h>
+#include <time.h>
+
+int *array_1D(int len)
+{
+    int *arr = (int*)malloc(len * sizeof(int));
+    return arr;
+}
+
+int **array_2D(int rows, int cols)
+{
+    int **matrix= (int**)malloc(rows *sizeof(int*));
+    int r;
+    for(r=0; r<rows; r++)
+    {
+        matrix[r]=(int*)malloc(cols* sizeof(int));
+    }
+    return matrix;
+}
+
+void matrix()
+{
+    int rows =3;
+    int cols =4;
+    int **matrix;
+    matrix = (int**)malloc(rows * sizeof(int*));
+    int r;
+    for(r=0; r<rows; r++)
+    {
+        matrix[r]=(int*)malloc(cols *sizeof(int));
+    }
+    int i,j;
+    for(i=0; i<rows; i++)
+    {
+        for(j=0; j<cols; j++)
+        {
+            matrix[i][j] =10*i+j;
+            printf("%02d ",matrix[i][j]);
+        }
+        printf("\n");
+    }
+    for(i=0; i<rows; i++)
+    {
+        free(matrix[i]);
+    }
+    free(matrix);
+    return 0;
+}
+
+void inMang(int*a, int n)
+{
+    for(int i=0; i<n; i++)
+    {
+        printf("%d",*(a+i));
+    }
+    printf("\n");
+}
+
+void hoan_doi(char *pa, char *pb)
+{
+    int p;
+    p=*pa;
+    *pa=*pb;
+    *pb=p;
+}
+
+void daoChuoi(char *a,int n)
+{
+    int i;
+    for(i=0; i<(n/2); i++)
+    {
+        hoan_doi((a+i),(a+(n-i-1)));
+    }
+}
+
+void nhap(int a[],int n)
+{
+    int i;
+    for(i=0; i<n; i++)
+    {
+        //scanf("%d",&a[i]);
+        a[i]=i+1;
+    }
+}
+
+void random(int a[],int n)
+{
+    srand(time(NULL));
+    int i;
+    for(i=0; i<n; i++)
+    {
+        a[i]= rand()%101;
+    }
+}
+
+void printf_array(int a[],int n)
+{
+    int i;
+    for(i=0; i<n; i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+
+void write_bin(int *file_path,int *a,int n)
+{
+    FILE *fp = fopen(file_path,"wb");
+    if(fp!=NULL)
+    {
+        int i;
+        for(i=0; i<n; i++)
+        {
+            fwrite(&a[i],sizeof(int),1,fp);
+        }
+    }
+    fclose(fp);
+}
+
+void write_text(int *file_path,int *a,int n)
+{
+    FILE *fp = fopen(file_path,"wt");
+    int i;
+    for(i=0; i<n; i++)
+    {
+        fprintf(fp,"%d ",a[i]);
+    }
+    fclose(fp);
+}
+
+void read_bin(int *file_path)
+{
+    FILE *fp = fopen(file_path,"rb");
+    char line[1005];
+    if(fp!=NULL)
+    {
+        fseek(fp,-3*sizeof(int),SEEK_END);
+        int x;
+        fread(&x,sizeof(int),1,fp);
+        printf("%d",x);
+    }
+    fclose(fp);
+}
+
+void read_text(char *file_path)
+{
+    FILE *fp = fopen(file_path,"rt");
+    int line[1005];
+    if(fp!=NULL)
+    {
+        while(!feof(fp))
+        {
+            fgets(line, sizeof(line),fp);
+            printf("%s",line);
+        }
+    }
+    fclose(fp);
+}
+
+int main()
+{
+    //freopen("C:\\New folder\\input.txt","r",stdin);
+    char *file_path = "C:\\New folder\\1.txt";
+    int a[105];
+    int n=100;
+    random(a,n);
+    //printf_array(a,n);
+    write_bin(file_path,a,n);
+    read_bin(file_path);
+    return 0;
+}

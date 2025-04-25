@@ -1,126 +1,131 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <malloc.h>
+#include<stdio.h>
+#include<conio.h>
+#include<windows.h>
+#include<string.h>
 
-char ch[]= {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-
-typedef struct Node
+typedef struct node
 {
     int data;
-    struct Node *next;
-} Node;
+    struct node * next;
+} node;
 
-Node *top=NULL;
+char Chars[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9','A', 'B', 'C', 'D', 'E', 'F'};
 
-Node* create_node(int n)
+node *top = NULL;
+
+node* taoNode(int n)
 {
-    Node *p=(Node*)malloc(sizeof(Node));
-    p->data=n;
-    p->next=NULL;
-    return p;
+    node *p;
+    p=(node*)malloc(sizeof(node));
+    p->data = n;
+    p->next = NULL;
 }
 
 void push(int n)
 {
-    Node *node=create_node(n);
-    if(top==NULL)
+    node *p = taoNode(n);
+    if(top == NULL)
     {
-        top=node;
+        top = p;
     }
     else
     {
-        node->data=top;
-        top=node;
+        p->next = top;
+        top = p;
     }
 }
 
-int pop()
+int  pop()
 {
-    if(top==NULL)
+    if(top == NULL)
     {
         return -1;
     }
     else
     {
-        int n=top->data;
-        Node *k=top;
+        int n = top->data;
+        node*k = top;
         top=top->next;
         free(k);
-        return(n);
+        return n;
     }
 }
 
-void chuyen_doi(int he_10,int co_so)
+void chuyenDoiCoSo(int he10, int coSo)
 {
-    while(he_10>0)
+    while(he10>0)
     {
-        push(he_10%co_so);
-        he_10/=co_so;
+        push(he10%coSo);
+        he10 /= coSo;
     }
+
 }
 
-void hien_thi()
+void hienThi()
 {
     while(top!=NULL)
     {
-        printf("%c",ch[pop()]);
+        printf("%c", Chars[pop()]);
     }
     printf("\n");
 }
 
-void menu()
+void Menu()
 {
-    printf("1. Chuyen co so 2.\n");
-    printf("2. Chuyen co so 8.\n");
-    printf("3. Chuyen co so 16.\n");
-    printf("4. Ket thuc.\n");
-    printf("Lua chon: ");
+    printf("1. sang he 2\n");
+    printf("2. sang he 8\n");
+    printf("3. sang he 16\n");
+    printf("0. thoat\n");
+    printf("Lua Chon: ");
+
 }
 
-int main()
+int main ()
 {
-    int n,d;
+    int c,n;
     do
     {
-        menu();
-        scanf("%d",&n);
-        switch(n)
+        Menu();
+        scanf("%d",&c);
+        switch(c)
         {
         case 1:
-        {
-            scanf("%d",&d);
-            chuyen_doi(d,2);
-            hien_thi();
-            /*system("pause");
-            system("cls");*/
+            printf("nhap he co so 10: ");
+            scanf("%d",&n);
+            chuyenDoiCoSo(n,2);
+            printf("hien thi he co so 2: ");
+            hienThi();
+            getch();
+            system("pause");
+            system("cls");
             break;
-        }
         case 2:
-        {
-            scanf("%d",&d);
-            chuyen_doi(d,8);
-            hien_thi();
+            printf("nhap he co so 10: ");
+            scanf("%d",&n);
+            chuyenDoiCoSo(n, 8);
+            printf("hien thi he co so 8: ");
+            hienThi();
+            //getch();
+            system("pause");
+            system("cls");
             break;
-        }
         case 3:
-        {
-            scanf("%d",&d);
-            chuyen_doi(d,16);
-            hien_thi();
+            printf("nhap he co so 10: ");
+            scanf("%d",&n);
+            chuyenDoiCoSo(n,16);
+            printf("hien thi he co so 16: ");
+            hienThi();
+            getch();
+            system("pause");
+            system("cls");
             break;
-        }
-        case 4:
-        {
-            printf("The end\n");
+        case 0:
+            printf("THE END");
             exit(0);
-            break;
-        }
         default:
-            printf("Nen chon tu 1 den 4\n");
-            break;
+            printf("chi chon tu 0 den 3");
         }
     }
-    while(n!=4);
+    while (c!=0);
     return 0;
 }

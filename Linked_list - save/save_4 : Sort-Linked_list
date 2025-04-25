@@ -5,8 +5,8 @@
 
 typedef struct SV
 {
-    char ho_ten[20];
     int sbd;
+    char ho_ten[20];
     int diem_toan;
     int diem_ly;
     int diem_hoa;
@@ -33,7 +33,6 @@ Node* create_node()
     printf("nhap sbd:");
     scanf("%d",&node->sv.sbd);
     getchar();
-    //fflush(stdin);
     printf("nhap ho ten:");
     gets(node->sv.ho_ten);
     printf("nhap diem toan:");
@@ -77,13 +76,11 @@ void sap_xep_theo_tong_diem(Linked_list *list)
 {
     Node *nodelt = list->dau;
     Node *min;
-    Node *nodetam = malloc(sizeof(Node)); // Tạo một nút tạm để lưu trữ dữ liệu khi hoán đổi
-
+    Node *nodetam = malloc(sizeof(Node));
     while (nodelt != NULL)
     {
         min = nodelt;
         Node *node = nodelt->next;
-
         while (node != NULL)
         {
             if (node->sv.diem_tong > min->sv.diem_tong)
@@ -92,31 +89,26 @@ void sap_xep_theo_tong_diem(Linked_list *list)
             }
             node = node->next;
         }
-
         if (min != nodelt)
         {
-            // Hoán đổi dữ liệu giữa nodelt và min
             nodetam->sv = nodelt->sv;
             nodelt->sv = min->sv;
             min->sv = nodetam->sv;
         }
         nodelt = nodelt->next;
     }
-
-    free(nodetam); // Giải phóng bộ nhớ sau khi sử dụng
+    free(nodetam);
 }
 
 void sap_xep_theo_diem_toan(Linked_list *list)
 {
     Node *nodelt = list->dau;
     Node *min;
-    Node *nodetam = malloc(sizeof(Node)); // Tạo một nút tạm để lưu trữ dữ liệu khi hoán đổi
-
+    Node *nodetam = malloc(sizeof(Node));
     while (nodelt != NULL)
     {
         min = nodelt;
         Node *node = nodelt->next;
-
         while (node != NULL)
         {
             if (node->sv.diem_toan > min->sv.diem_toan)
@@ -125,31 +117,26 @@ void sap_xep_theo_diem_toan(Linked_list *list)
             }
             node = node->next;
         }
-
         if (min != nodelt)
         {
-            // Hoán đổi dữ liệu giữa nodelt và min
             nodetam->sv = nodelt->sv;
             nodelt->sv = min->sv;
             min->sv = nodetam->sv;
         }
         nodelt = nodelt->next;
     }
-
-    free(nodetam); // Giải phóng bộ nhớ sau khi sử dụng
+    free(nodetam);
 }
 
 void sap_xep_theo_diem_ly(Linked_list *list)
 {
     Node *nodelt = list->dau;
     Node *min;
-    Node *nodetam = malloc(sizeof(Node)); // Tạo một nút tạm để lưu trữ dữ liệu khi hoán đổi
-
+    Node *nodetam = malloc(sizeof(Node));
     while (nodelt != NULL)
     {
         min = nodelt;
         Node *node = nodelt->next;
-
         while (node != NULL)
         {
             if (node->sv.diem_ly > min->sv.diem_ly)
@@ -158,31 +145,26 @@ void sap_xep_theo_diem_ly(Linked_list *list)
             }
             node = node->next;
         }
-
         if (min != nodelt)
         {
-            // Hoán đổi dữ liệu giữa nodelt và min
             nodetam->sv = nodelt->sv;
             nodelt->sv = min->sv;
             min->sv = nodetam->sv;
         }
         nodelt = nodelt->next;
     }
-
-    free(nodetam); // Giải phóng bộ nhớ sau khi sử dụng
+    free(nodetam);
 }
 
 void sap_xep_theo_diem_hoa(Linked_list *list)
 {
     Node *nodelt = list->dau;
     Node *min;
-    Node *nodetam = malloc(sizeof(Node)); // Tạo một nút tạm để lưu trữ dữ liệu khi hoán đổi
-
+    Node *nodetam = malloc(sizeof(Node));
     while (nodelt != NULL)
     {
         min = nodelt;
         Node *node = nodelt->next;
-
         while (node != NULL)
         {
             if (node->sv.diem_hoa > min->sv.diem_hoa)
@@ -191,18 +173,15 @@ void sap_xep_theo_diem_hoa(Linked_list *list)
             }
             node = node->next;
         }
-
         if (min != nodelt)
         {
-            // Hoán đổi dữ liệu giữa nodelt và min
             nodetam->sv = nodelt->sv;
             nodelt->sv = min->sv;
             min->sv = nodetam->sv;
         }
         nodelt = nodelt->next;
     }
-
-    free(nodetam); // Giải phóng bộ nhớ sau khi sử dụng
+    free(nodetam);
 }
 
 void sap_xep(Linked_list *list)
@@ -212,6 +191,7 @@ void sap_xep(Linked_list *list)
     printf("2.Theo diem ly.\n");
     printf("3.Theo diem hoa.\n");
     printf("4.Theo diem tong.\n");
+    printf("Lua chon: ");
     scanf("%d",&n);
     switch(n)
     {
@@ -227,6 +207,7 @@ void sap_xep(Linked_list *list)
     default:
         sap_xep_theo_tong_diem(list);
     }
+    printf("Da sap xep xong.\n");
 }
 
 void in_toan_bo(Linked_list *list)
@@ -243,35 +224,35 @@ void in_toan_bo(Linked_list *list)
     printf("_______________________________________________________\n");
 }
 
-
 int main()
 {
     Linked_list *list=create_list();
     Node* node;
-    printf("MENU.\n");
-    printf("1.Them sinh vien.\n");
-    printf("2.Hien thi danh sach.\n");
-    printf("3.Sap xep.\n");
-    printf("0.The end.\n");
-    printf("_____________________\n");
     int lua_chon;
     do
     {
+        printf("MENU.\n");
+        printf("1.Them sinh vien.\n");
+        printf("2.Hien thi danh sach.\n");
+        printf("3.Sap xep.\n");
+        printf("0.The end.\n");
+        printf("_______________________________________________________\n");
         printf("Chon: ");
         scanf("%d",&lua_chon);
-        //getchar();
-        //fflush(stdin);
         switch(lua_chon)
         {
         case 1:
             node=create_node();
             insert_to_last(list,node);
+            printf("_______________________________________________________\n");
             break;
         case 2:
             in_toan_bo(list);
+            printf("_______________________________________________________\n");
             break;
         case 3:
             sap_xep(list);
+            printf("_______________________________________________________\n");
             break;
         default:
             printf("The end.\n");

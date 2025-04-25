@@ -1,0 +1,126 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
+
+char ch[]= {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+
+typedef struct Node
+{
+    int data;
+    struct Node *next;
+} Node;
+
+Node *top=NULL;
+
+Node* create_node(int n)
+{
+    Node *p=(Node*)malloc(sizeof(Node));
+    p->data=n;
+    p->next=NULL;
+    return p;
+}
+
+void push(int n)
+{
+    Node *node=create_node(n);
+    if(top==NULL)
+    {
+        top=node;
+    }
+    else
+    {
+        node->data=top;
+        top=node;
+    }
+}
+
+int pop()
+{
+    if(top==NULL)
+    {
+        return -1;
+    }
+    else
+    {
+        int n=top->data;
+        Node *k=top;
+        top=top->next;
+        free(k);
+        return(n);
+    }
+}
+
+void chuyen_doi(int he_10,int co_so)
+{
+    while(he_10>0)
+    {
+        push(he_10%co_so);
+        he_10/=co_so;
+    }
+}
+
+void hien_thi()
+{
+    while(top!=NULL)
+    {
+        printf("%c",ch[pop()]);
+    }
+    printf("\n");
+}
+
+void menu()
+{
+    printf("1. Chuyen co so 2.\n");
+    printf("2. Chuyen co so 8.\n");
+    printf("3. Chuyen co so 16.\n");
+    printf("4. Ket thuc.\n");
+    printf("Lua chon: ");
+}
+
+int main()
+{
+    int n,d;
+    do
+    {
+        menu();
+        scanf("%d",&n);
+        switch(n)
+        {
+        case 1:
+        {
+            scanf("%d",&d);
+            chuyen_doi(d,2);
+            hien_thi();
+            /*system("pause");
+            system("cls");*/
+            break;
+        }
+        case 2:
+        {
+            scanf("%d",&d);
+            chuyen_doi(d,8);
+            hien_thi();
+            break;
+        }
+        case 3:
+        {
+            scanf("%d",&d);
+            chuyen_doi(d,16);
+            hien_thi();
+            break;
+        }
+        case 4:
+        {
+            printf("The end\n");
+            exit(0);
+            break;
+        }
+        default:
+            printf("Nen chon tu 1 den 4\n");
+            break;
+        }
+    }
+    while(n!=4);
+    return 0;
+}

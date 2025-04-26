@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct
+{
+    char ten[20];
+    double toan;
+    double van;
+    double tb;
+} thong_tin;
+
+void create_list(thong_tin s[],int n)
+{
+    int i;
+    for(i=0; i<n; i++)
+    {
+        printf("Nhap ten hoc sinh: ");
+        getchar();
+        gets(s[i].ten);
+        printf("Diem toan: ");
+        scanf("%lf",&s[i].toan);
+        printf("Diem van: ");
+        scanf("%lf",&s[i].van);
+        s[i].tb=(s[i].toan+s[i].van)/2;
+    }
+}
+
+void sap_xep(thong_tin s[],int n)
+{
+    int i,j;
+    thong_tin *np=(thong_tin*)malloc(sizeof(thong_tin));
+    for(i=0; i<n-1; i++)
+    {
+        for(j=0; j<n-1; j++)
+        {
+            if(s[i].tb<s[i+1].tb)
+            {
+                *np=s[i];
+                s[i]=s[i+1];
+                s[i+1]=*np;
+            }
+        }
+    }
+    free(np);
+}
+
+void print_list(thong_tin s[],int n)
+{
+    int i;
+    printf("     Ho ten         | Diem TB\n");
+    for(i=0; i<n; i++)
+    {
+        printf("%20s| %2.2f\n",s[i].ten,s[i].tb);
+    }
+
+}
+
+void find(thong_tin s[])
+{
+    int i;
+    printf("Nhap ten hoc sinh can tim: ");
+    char n[20];
+    gets(n);
+    printf("         Ho ten     | Toan | Van  | Diem TB\n");
+    for(i=0; i<strlen(s); i++)
+    {
+        if(strcmp(n,s[i].ten)==0)
+        {
+            printf("%20s| %.2f | %.2f | %.2f\n",s[i].ten,s[i].toan,s[i].van,s[i].tb);
+            return;
+        }
+    }
+    printf("Ko tim thay!\n");
+}
+
+void menu()
+{
+    printf("1.Tao danh sach.\n");
+    printf("2.Hien thi danh sach.\n");
+    printf("3.Tim hoc sinh.\n");
+    printf("4.Ket thuc.\n");
+    printf("Lua chon: ");
+}
+
+int main()
+{
+    thong_tin s[100];
+    int n,x;
+    do
+    {
+        menu();
+        scanf("%d",&n);
+        getchar();
+        switch(n)
+        {
+        case 1:
+            printf("Nhap so luong hoc sinh: ");
+            scanf("%d",&x);
+            create_list(s,x);
+            break;
+        case 2:
+            sap_xep(s,n);
+            print_list(s,x);
+            break;
+        case 3:
+            find(s);
+            break;
+        case 4:
+            printf("THE END");
+            break;
+        }
+    }
+    while(n!=4);
+    return 0;
+}

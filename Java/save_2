@@ -1,0 +1,14 @@
+package AndroidPhone;
+
+import java.util.Scanner;
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Nhap : ");
+        Scanner scanner = new Scanner(System.in);
+        String key = scanner.nextLine();
+        System.out.println("Hello world with " + key + " and java.");
+        scanner.close();
+    }
+}

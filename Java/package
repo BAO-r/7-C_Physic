@@ -1,0 +1,22 @@
+package AndroidPhone;
+
+public class Student {
+    String name;
+    int age;
+    public void learnjava(){
+        System.out.println("Learn Java with Youtube");
+    }
+}
+
+_________________________________________________________________________________________________
+
+package AndroidPhone;
+
+public class Video {
+    public static void main(String args[]) {
+        Student s = new Student();
+        s.name = "Bao";
+        s.age = 19;
+        System.out.println("Ten la " + s.name + ",tuoi la " + s.age);
+    }
+}

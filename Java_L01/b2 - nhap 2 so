@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Hello{
+	public static void main(String args[]){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Nhap so 1: ");
+		float s1 = scanner.nextFloat();
+		System.out.println("Nhap so 2: ");
+		float s2 = scanner.nextFloat();
+		System.out.println("Ket qua:");s
+		System.out.println(s1+ " + " + s2 + " = " + (s1+s2));
+		System.out.println(s1+ " - " + s2 + " = " + (s1-s2));
+		System.out.println(s1+ " * " + s2 + " = " + (s1*s2));
+		System.out.println(s1+ " / " + s2 + " = " + (s1/s2));
+	}
+}

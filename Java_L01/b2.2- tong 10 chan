@@ -1,0 +1,12 @@
+public class Hello{
+	public static void main(String args[]){
+		int j=0;
+        for(int i=1 ; i<=10 ; i++)
+        {
+            if(i%2==0){
+            j=j+i;
+            }
+        }
+        System.out.println("Tong 10 so chan dau tien la " + j);
+	}
+}

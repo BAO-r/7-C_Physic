@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Hello{
+	public static void main(String args[]){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Nhap phuong trinh bac hai!");
+		System.out.print("He so bac hai: ");
+		float s1 = scanner.nextFloat();
+		System.out.print("He so bac nhat: ");
+		float s2 = scanner.nextFloat();
+		System.out.print("He so tu do: ");
+		float s3 = scanner.nextFloat();
+		float delta = s2*s2 - 4*s1*s3;
+        double d = Math.sqrt(delta);
+		System.out.println("PT: " + s1 + "x^2 + " + s2 + "x + " + s3 + " = 0" );
+        System.out.println("=> x1 = " + ((-s2+d)/(2*s1)));
+        System.out.println("=> x2 = " + ((-s2-d)/(2*s1)));
+	}
+}

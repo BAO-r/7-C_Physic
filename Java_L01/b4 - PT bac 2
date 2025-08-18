@@ -12,8 +12,18 @@ public class Hello{
 		float s3 = scanner.nextFloat();
 		float delta = s2*s2 - 4*s1*s3;
         double d = Math.sqrt(delta);
+		if(delta > 0){
 		System.out.println("PT: " + s1 + "x^2 + " + s2 + "x + " + s3 + " = 0" );
         System.out.println("=> x1 = " + ((-s2+d)/(2*s1)));
         System.out.println("=> x2 = " + ((-s2-d)/(2*s1)));
+		}
+		else if(delta == 0){
+		System.out.println("PT: " + s1 + "x^2 + " + s2 + "x + " + s3 + " = 0" );
+        System.out.println("=> x = " + ((-s2)/(2*s1)));	
+		}
+		else{
+		System.out.println("PT: " + s1 + "x^2 + " + s2 + "x + " + s3 + " = 0" );
+        System.out.println("Phuong trinh vo nghiem!");
+		}
 	}
 }

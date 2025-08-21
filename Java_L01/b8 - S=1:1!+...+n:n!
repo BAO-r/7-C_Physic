@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Hello{
+	public static void main(String args[]){
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhap so nguyen : ");
+        float d = scanner.nextFloat();
+        float s = 0;
+        scanner.close();
+        for (float n = 1; n <= d; n++) {
+            float j = 1;
+            for (float i = 1; i <= n; i++) {
+                j = j * i;
+            }
+            s = s + (n/j);
+        }
+        System.out.println("s = " + s);
+	}
+}

@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Hello{
+	public static void main(String args[]){
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhap so nguyen :");
+        int d = scanner.nextInt();
+        int s = 0 ,temp = d;
+        while(temp>0){
+            s = s + (temp % 10);
+            temp = (temp / 10);
+        }
+        System.out.println("Tong chu so cua " + d + " la: " + s);
+	}
+}

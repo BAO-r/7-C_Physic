@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Hello{
+	
+	public static int GT(int d) {
+        int i, j = 1;
+        for (i = 1; i <= d; i++) {
+            j = j * i;
+        }
+        return j;
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap so:");
+        int n = sc.nextInt();
+        int a = GT(n);
+        System.out.print(n + "! = " + a);
+        sc.close();
+    }
+}

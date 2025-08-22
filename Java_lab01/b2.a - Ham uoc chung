@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Hello{
+	
+	public static int UC(int n, int m) {
+        int i;
+        for (i = m; i > 0; i--) {
+            if ((m % i == 0) && (n % i == 0)) {
+                return i;
+            }
+        }
+        return 1;
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap so thu 1:");
+        int n = sc.nextInt();
+        System.out.println("Nhap so thu 2: ");
+        int m = sc.nextInt();
+        int a = UC(n, m);
+        System.out.print("Uoc chung lon nhat cua " + n + " va " + m + " la: " + a);
+        sc.close();
+    }
+}

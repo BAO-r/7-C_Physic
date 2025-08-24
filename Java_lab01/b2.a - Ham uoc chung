@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class Hello{
 	
 	public static int UC(int n, int m) {
-        int i;
-        for (i = m; i > 0; i--) {
-            if ((m % i == 0) && (n % i == 0)) {
-                return i;
-            }
+        int temp;
+        while (m != 0) {
+            temp = m;
+            m = n % m;
+            n = temp;
         }
-        return 1;
+        return n;
     }
 
     public static void main(String args[]) {

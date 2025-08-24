@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class Hello{
+    public static void doicho(int a[], int n, int m) {
+        int t = a[n];
+        a[n] = a[m];
+        a[m] = t;
+    }
+
+    public static void Nhap(int a[], int n) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        // sc.close();
+    }
+
+    public static void In(int a[], int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print(a[i] + "  ");
+        }
+    }
+
+    public static int GTLN(int a[], int n) {
+        int j = a[0];
+        for (int i = 1; i < n; i++) {
+            if (a[i] > j)
+                j = a[i];
+        }
+        return j;
+    }
+
+    public static int GTNN(int a[], int n) {
+        int j = a[0];
+        for (int i = 1; i < n; i++) {
+            if (a[i] < j)
+                j = a[i];
+        }
+        return j;
+    }
+
+    public static int Chanx(int a[], int n) {
+        int j = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] % 2 == 0)
+                j++;
+        }
+        return j;
+    }
+
+    public static void sapxep(int a[], int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (a[i] > a[j]) {
+                    doicho(a, i, j);
+                }
+            }
+        }
+    }
+
+    public static void Search(int a[], int n, int m) {
+        for (int i = 0; i < n; i++) {
+            if (a[i] == m) {
+                System.out.println(m + " la phan tu thu " + i + " trong day");
+                break;
+            }
+        }
+    }
+
+    public static void main(String args[]) {
+        int a[] = new int[100];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Muon nhap bao nhieu so:");
+        int n = sc.nextInt();
+        System.out.println("Nhap di: ");
+        Nhap(a, n);
+        System.out.print("Day: ");
+        In(a, n);
+        System.out.println("\nGia tri lon nhat trong day la: " + GTLN(a, n));
+        System.out.println("Gia tri nho nhat trong day la: " + GTNN(a, n));
+        System.out.println("Day co " + Chanx(a, n) + " so la so chan");
+        sapxep(a, n);
+        System.out.print("Day duoc sap xep: ");
+        In(a, n);
+        System.out.print("\nNhap gia tri muon tim: ");
+        int m = sc.nextInt();
+        Search(a, n, m);
+        sc.close();
+    }
+}

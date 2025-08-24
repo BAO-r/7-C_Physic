@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Hello{
-	
 	public static int UC(int n, int m) {
         int temp;
         while (m != 0) {

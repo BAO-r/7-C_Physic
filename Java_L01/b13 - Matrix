@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Hello {
+
+    public static void inputMatrix(int[][] a, int n, int m) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+        sc.close();
+    }
+
+    public static void outputMatrix(int[][] a, int n, int m) {
+        for (int i = 0; i < n; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < m; j++) {
+                System.out.print(a[i][j] + "  ");
+            }
+            System.out.print("|\n");
+        }
+    }
+
+    public static int minMatrix(int[][] a, int n, int m) {
+        int t = a[0][0];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (a[i][j] < t) {
+                    t = a[i][j];
+                }
+            }
+        }
+        return t;
+    }
+
+    public static int maxMatrixLe(int[][] a, int n, int m) {
+        int t = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (a[i][j] > t && a[i][j] % 2 != 0) {
+                    t = a[i][j];
+                }
+            }
+        }
+        return t;
+    }
+
+    public static int dongMax(int[][] a, int n, int m) {
+        int t, k = 0, d = 0;
+        for (int j = 0; j < m; j++) {
+            k = k + a[0][j];
+        }
+        for (int i = 1; i < n; i++) {
+            t = 0;
+            for (int j = 0; j < m; j++) {
+                t = t + a[i][j];
+            }
+            if (t > k) {
+                k = t;
+                d = i;
+            }
+        }
+        return d;
+    }
+
+    public static void main(String args[]) {
+        int a[][] = new int[100][100];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap so cot:");
+        int n = sc.nextInt();
+        System.out.println("Nhap so hang:");
+        int m = sc.nextInt();
+        System.out.println("Nhap di: ");
+        inputMatrix(a, n, m);
+        outputMatrix(a, n, m);
+        System.out.println("Phan tu nho nhat trong ma tran la: " + minMatrix(a, n, m));
+        System.out.println("Phan tu le lon nhat trong ma tran la: " + maxMatrixLe(a, n, m));
+        System.out.println("Dong co tong lon nhat trong ma tran la dong: " + dongMax(a, n, m));
+        sc.close();
+    }
+}

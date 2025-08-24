@@ -1,0 +1,100 @@
+package AndroidPhone;
+
+import java.util.Scanner;
+
+public class Video {
+    public static void doicho(int[][] a, int n, int m, int j) {
+        int t = a[n][j];
+        a[n][j] = a[m][j];
+        a[m][j] = t;
+    }
+
+    public static void inputMatrix(int[][] a, int n, int m) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+        sc.close();
+    }
+
+    public static void outputMatrix(int[][] a, int n, int m) {
+        for (int i = 0; i < n; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < m; j++) {
+                System.out.print(a[i][j] + "  ");
+            }
+            System.out.print("|\n");
+        }
+    }
+
+    public static int maxMatrix(int[][] a, int n, int m) {
+        int t = a[0][0];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (a[i][j] > t) {
+                    t = a[i][j];
+                }
+            }
+        }
+        return t;
+    }
+
+    public static int testelement(int d) {
+        int j = 0;
+        for (int i = 2; i < d; i++) {
+            if (d % i == 0) {
+                j = j + 1;
+                break;
+            }
+        }
+        if (j == 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+
+    public static void element(int[][] a, int n, int m) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (testelement(a[i][j]) == 1) {
+                    System.out.print(a[i][j] + " ");
+                }
+            }
+        }
+    }
+
+    public static void sapxepcot(int[][] a, int n, int m) {
+        for (int j = 0; j < m; j++) {
+            for (int t = 0; t < n; t++) {
+                for (int i = 1; i < n; i++) {
+                    if (a[i - 1][j] > a[i][j]) {
+                        doicho(a, i - 1, i, j);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void main(String args[]) {
+        int a[][] = new int[100][100];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap so cot:");
+        int n = sc.nextInt();
+        System.out.println("Nhap so dong:");
+        int m = sc.nextInt();
+        System.out.println("Nhap di: ");
+        inputMatrix(a, n, m);
+        outputMatrix(a, n, m);
+        System.out.println("Phan tu lon nhat trong ma tran la: " + maxMatrix(a, n, m));
+        System.out.print("Phan tu le lon nhat trong ma tran la: ");
+        element(a, n, m);
+        System.out.println("\nMa tran duoc xep theo cot: ");
+        sapxepcot(a, n, m);
+        outputMatrix(a, n, m);
+        sc.close();
+    }
+}

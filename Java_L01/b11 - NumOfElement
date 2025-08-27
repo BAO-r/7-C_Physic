@@ -11,8 +11,8 @@ public class Hello{
                 j = j + 1;
             }
         }
-
-        if (j == 0) {
+		
+        if (j == 0 && j != 1) {
             System.out.println(d + " la so nguyen to.");
         } else {
             System.out.println(d + " khong la so nguyen to.");

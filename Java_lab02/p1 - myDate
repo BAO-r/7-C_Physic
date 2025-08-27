@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class myDate {
+    private int day;
+    private int month;
+    private int year;
+
+    public myDate() {
+        this.day = 28;
+        this.month = 8;
+        this.year = 2025;
+    }
+
+    public myDate(myDate temp) {
+        this.day = temp.day;
+        this.month = temp.month;
+        this.year = temp.year;
+    }
+
+    public void nhap() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ngay: ");
+        day = sc.nextInt();
+        System.out.print("Nhap thang: ");
+        month = sc.nextInt();
+        System.out.print("Nhap nam: ");
+        year = sc.nextInt();
+        sc.close();
+    }
+
+    public void xuat() {
+        System.out.println(day + "/" + month + "/" + year);
+    }
+
+    public static void main(String[] args) {
+        myDate d1 = new myDate();
+        System.out.print("Ngay mac dinh: ");
+        d1.xuat();    
+        myDate d2 = new myDate();
+        d2.nhap();
+        System.out.print("Ngay vua nhap: ");
+        d2.xuat();
+    }
+}

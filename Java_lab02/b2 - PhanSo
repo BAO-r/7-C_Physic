@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class PS {
+    private int tu, mau;
+
+    public PS() {
+        tu = 1;
+        mau = 1;
+    }
+
+    public PS(PS temp) {
+        tu = temp.tu;
+        mau = temp.mau;
+    }
+
+    public static void nhapPS(PS t) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap tu so: ");
+        t.tu = sc.nextInt();
+        System.out.println("Nhap mau so: ");
+        t.mau = sc.nextInt();
+    }
+
+    public static int UC(int n, int m) {
+        int temp;
+        while (m != 0) {
+            temp = m;
+            m = n % m;
+            n = temp;
+        }
+        return n;
+    }
+
+    public static void total(PS p1, PS p2) {
+        PS ps = new PS();
+        ps.tu = p1.tu * p2.mau + p1.mau * p2.tu;
+        ps.mau = p1.mau * p2.mau;
+        System.out.println("Tong: " + p1.tu + "/" + p1.mau + " + " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/"+ ps.mau / UC(ps.tu, ps.mau));
+    }
+
+    public static void hieu(PS p1, PS p2) {
+        PS ps = new PS();
+        ps.tu = p1.tu * p2.mau - p1.mau * p2.tu;
+        ps.mau = p1.mau * p2.mau;
+        System.out.println("Hieu: " + p1.tu + "/" + p1.mau + " - " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/" + ps.mau / UC(ps.tu, ps.mau));
+    }
+
+    public static void tich(PS p1, PS p2) {
+        PS ps = new PS();
+        ps.tu = p1.tu * p2.tu;
+        ps.mau = p1.mau * p2.mau;
+        System.out.println("Tich: " + p1.tu + "/" + p1.mau + " * " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/" + ps.mau / UC(ps.tu, ps.mau));
+    }
+
+    public static void thuong(PS p1, PS p2) {
+        PS ps = new PS();
+        ps.tu = p1.tu * p2.mau;
+        ps.mau = p1.mau * p2.tu;
+        System.out.println("Thuong: " + p1.tu + "/" + p1.mau + " : " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/" + ps.mau / UC(ps.tu, ps.mau));
+    }
+
+    public static void main(String[] args) {
+        PS p1 = new PS();
+        System.out.println("Nhap phan so 1: ");
+        nhapPS(p1);
+        PS p2 = new PS();
+        System.out.println("Nhap phan so 2: ");
+        nhapPS(p2);
+        System.out.println(p1.tu + "/" + p1.mau);
+        System.out.println(p2.tu + "/" + p2.mau);
+        total(p1, p2);
+        hieu(p1, p2);
+        tich(p1, p2);
+        thuong(p1, p2);
+    }
+}

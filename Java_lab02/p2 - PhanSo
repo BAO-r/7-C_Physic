@@ -35,28 +35,43 @@ public class PS {
         PS ps = new PS();
         ps.tu = p1.tu * p2.mau + p1.mau * p2.tu;
         ps.mau = p1.mau * p2.mau;
-        System.out.println("Tong: " + p1.tu + "/" + p1.mau + " + " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/"+ ps.mau / UC(ps.tu, ps.mau));
+        System.out.print("Tong: " + p1.tu + "/" + p1.mau + " + " + p2.tu + "/" + p2.mau + " = ");
+        RutGon(ps);
     }
 
     public static void hieu(PS p1, PS p2) {
         PS ps = new PS();
         ps.tu = p1.tu * p2.mau - p1.mau * p2.tu;
         ps.mau = p1.mau * p2.mau;
-        System.out.println("Hieu: " + p1.tu + "/" + p1.mau + " - " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/" + ps.mau / UC(ps.tu, ps.mau));
+        System.out.print("Hieu: " + p1.tu + "/" + p1.mau + " - " + p2.tu + "/" + p2.mau + " = ");
+        RutGon(ps);
     }
 
     public static void tich(PS p1, PS p2) {
         PS ps = new PS();
         ps.tu = p1.tu * p2.tu;
         ps.mau = p1.mau * p2.mau;
-        System.out.println("Tich: " + p1.tu + "/" + p1.mau + " * " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/" + ps.mau / UC(ps.tu, ps.mau));
+        System.out.print("Tich: " + p1.tu + "/" + p1.mau + " * " + p2.tu + "/" + p2.mau + " = ");
+        RutGon(ps);
     }
 
     public static void thuong(PS p1, PS p2) {
         PS ps = new PS();
         ps.tu = p1.tu * p2.mau;
         ps.mau = p1.mau * p2.tu;
-        System.out.println("Thuong: " + p1.tu + "/" + p1.mau + " : " + p2.tu + "/" + p2.mau + " = " + ps.tu / UC(ps.tu, ps.mau) + "/" + ps.mau / UC(ps.tu, ps.mau));
+        System.out.print("Thuong: " + p1.tu + "/" + p1.mau + " : " + p2.tu + "/" + p2.mau + " = ");
+        RutGon(ps);
+    }
+
+    public static void RutGon(PS a) {
+        int ucln = UC(Math.abs(a.tu), Math.abs(a.mau));
+        a.tu = a.tu / ucln;
+        a.mau = a.mau / ucln;
+        if (a.mau < 0) {
+            a.tu = -a.tu;
+            a.mau = -a.mau;
+        }
+        System.out.println(a.tu + "/" + a.mau);
     }
 
     public static void main(String[] args) {

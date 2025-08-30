@@ -1,0 +1,79 @@
+import java.util.Scanner;
+public class PS{
+    private int tu;
+    private int mau;
+    
+    public PS(int tu, int mau){
+        if(mau==0){
+            System.out.println("Khong co gia tri");
+        }
+        this.tu=tu;
+        this.mau=mau;
+		RutGon();
+    }
+    public PS(PS t){
+        this.tu=t.tu;
+        this.mau=t.mau;
+		RutGon();
+    }
+    public static PS NhapSo(){ //nhap tu va mau
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap tu: ");
+        int tu = sc.nextInt();
+        System.out.print("Nhap mau");
+        int mau = sc.nextInt();
+        return new PS(tu, mau);
+    }
+    public PS cong(PS a){ //phep cong
+        int tumoi = this.tu * a.mau + this.mau * a.tu;
+        int maumoi = this.mau * a.mau;
+        return new PS(tumoi, maumoi);
+    }
+    public PS tru(PS a){ //phep tru
+        int tumoi = this.tu * a.mau - this.mau * a.tu;
+        int maumoi = this.mau * a.mau;
+        return new PS(tumoi, maumoi);
+    }
+    public PS nhan(PS a){ //phep nhan
+        int tumoi = this.tu * a.tu;
+        int maumoi = this.mau * a.mau;
+        return new PS(tumoi, maumoi);
+    }
+    public PS chia(PS a){ //phep chia
+        int tumoi = this.tu * a.mau;
+        int maumoi = this.mau * a.tu;
+        return new PS(tumoi, maumoi);
+    }
+    private int UCLN(int a, int b) {
+        while (b != 0) {
+            int GiaTri = b;
+            b = a % b;
+            a = GiaTri;
+        }
+        return a;
+    }
+    private void RutGon(){
+        int ucln = UCLN(Math.abs(tu), Math.abs(mau));
+        tu = tu/ucln;
+        mau = mau/ucln;
+        if(mau<0){
+            tu = -tu;
+            mau = -mau;
+        }
+    }
+    public void InRa(){
+        System.out.println(tu + "/" + mau);
+    }
+    public static void main(String[] args){
+        PS p1 = NhapSo();
+        PS p2 = NhapSo();
+        System.out.print("ps1 + ps2 = ");
+        p1.cong(p2).InRa();
+        System.out.print("ps1 - ps2 = ");
+        p1.tru(p2).InRa();
+        System.out.print("ps1 * ps2 = ");
+        p1.nhan(p2).InRa();
+        System.out.print("ps1 / ps2 = ");
+        p1.chia(p2).InRa();
+    }
+}

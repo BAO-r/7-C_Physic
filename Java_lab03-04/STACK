@@ -1,0 +1,117 @@
+import java.util.Scanner;
+
+class Node {
+    int t; // dữ liệu kiểu int
+    Node next; // con trỏ tới nút tiếp theo
+
+    // Constructor
+    public Node(int t) {
+        this.t = t;
+        this.next = null;
+    }
+}
+
+// Lớp Stack: cài đặt ngăn xếp bằng danh sách liên kết
+class Stack {
+    private Node top; // trỏ tới đỉnh ngăn xếp
+    private int size; // số phần tử trong ngăn xếp (private)
+
+    // Constructor
+    public Stack() {
+        this.top = null;
+        this.size = 0;
+    }
+
+    // push(): đẩy một phần tử vào đỉnh ngăn xếp
+    public void push(int value) {
+        Node newNode = new Node(value);
+        newNode.next = top; // nút mới trỏ tới đỉnh hiện tại
+        top = newNode; // cập nhật đỉnh
+        size++;
+    }
+
+    // pop(): lấy và xóa phần tử trên cùng
+    public int pop() {
+        if (isEmpty()) {
+            return -1; // nếu rỗng thì trả -1
+        }
+        int value = top.t; // lấy dữ liệu
+        top = top.next; // di chuyển đỉnh xuống
+        size--;
+        return value;
+    }
+
+    // isEmpty(): kiểm tra rỗng
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    // numOfElement(): trả về số phần tử trong stack
+    public int numOfElement() {
+        return size;
+    }
+
+    // search(): tìm vị trí node trong stack (1 = đỉnh)
+    public int search(int value) {
+        Node current = top;
+        int position = 1; // bắt đầu từ 1 (đỉnh)
+        while (current != null) {
+            if (current.t == value) {
+                return position;
+            }
+            current = current.next;
+            position++;
+        }
+        return 0; // không tìm thấy
+    }
+
+    // display(): in ra các phần tử
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Ngan xep rong.");
+            return;
+        }
+        Node current = top;
+        System.out.print("Ngan xep: ");
+        while (current != null) {
+            System.out.print(current.t + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+public class ST {
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        Scanner sc = new Scanner(System.in);
+
+        // Thêm phần tử vào stack
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.display(); // Ngăn xếp: 30 20 10
+
+        // Lấy ra 1 phần tử
+        System.out.println("Phan tu pop: " + stack.pop());
+        stack.display(); // Ngăn xếp: 20 10
+
+        // Kiểm tra rỗng
+        System.out.println("Ngan xep rong: " + stack.isEmpty());
+
+        // Số phần tử
+        System.out.println("So phan tu trong stack: " + stack.numOfElement());
+
+        // Tìm kiếm
+        System.out.print("Nhap so can tim: ");
+        int x = sc.nextInt();
+        int pos = stack.search(x);
+        if (pos != 0)
+            System.out.println("Tim thay " + x + " tai vi tri " + pos + " tinh tu dinh.");
+        else
+            System.out.println("Khong tim thay " + x);
+
+        sc.close();
+    }
+}

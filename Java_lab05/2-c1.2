@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class PS {
+    private int t, m;
+
+    private static final Scanner sc = new Scanner(System.in);
+
+    public PS() {
+
+    }
+
+    public PS(int t, int m) {
+        this.t = t;
+        this.m = m;
+    }
+
+    public static int UC(int a, int b) {
+        int temp;
+        while (b != 0) {
+            temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static void RG(PS d) {
+        int uc = UC(d.t, d.m);
+        d.t = d.t / uc;
+        d.m = d.m / uc;
+        if (d.m < 0) {
+            d.t = -d.t;
+            d.m = -d.m;
+        }
+        System.out.print(d.t + "/" + d.m + "  ");
+    }
+
+    public static void nhap(PS st[], int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print("\nNhap phan so thu " + i + 1 + ":\nNhap tu: ");
+            int t = sc.nextInt();
+            System.out.print("Nhap mau: ");
+            int m = sc.nextInt();
+            st[i] = new PS(t, m);
+        }
+    }
+
+    public static void print(PS st[], int n) {
+        for (int i = 0; i < n; i++) {
+            RG(st[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.print("Muon nhap may so: ");
+        int n = sc.nextInt();
+        PS st[] = new PS[100];
+        nhap(st, n);
+        System.out.println("Day duoc rut gon: ");
+        print(st, n);
+        sc.close();
+    }
+}

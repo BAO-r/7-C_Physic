@@ -1,0 +1,92 @@
+package lab_05;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class CLASS {
+    private String name;
+    private List<student> ds;
+    private teacher advisor;
+
+    public CLASS(String n, teacher a) {
+        this.name = n;
+        this.advisor = a;
+        this.ds = new ArrayList<>();
+    }
+
+    public void addS(student s) {
+        ds.add(s);
+    }
+
+    public void print() {
+        System.out.println("Ten: " + name);
+        System.out.println("Si so: " + ds.size());
+        System.out.println("Advisor: " + advisor);
+        System.out.println("Danh sach: ");
+        for (student n : ds) {
+            System.out.println(n);
+        }
+    }
+}
+
+class person {
+    private String name;
+    private String address;
+    private String deparment;
+
+    public void print() {
+        System.out.println("Ten: " + name);
+        System.out.println("Dia chi: " + address);
+        System.out.println("Bo mon: " + deparment);
+    }
+}
+
+class student extends person {
+    private String class1;
+
+    public student(String s) {
+        this.class1 = s;
+    }
+
+    public void print() {
+        System.out.println(class1);
+    }
+}
+
+class teacher extends person {
+    private String rank;
+
+    public teacher(String s){
+        this.rank = s;
+    }
+
+    public void print(){
+        System.out.println(rank + "\n");
+    }
+}
+
+public class kt {
+    public static void main(String[] args) {
+        teacher gvcn = new teacher("Thac si");
+
+        student s1 = new student("AT21C");
+        student s2 = new student("AT21A");
+
+        CLASS lop1 = new CLASS("Bao", gvcn);
+
+        lop1.addS(s1);
+        lop1.addS(s2);
+
+        // In thông tin lớp
+        lop1.print();
+
+        // In thông tin sinh viên
+        System.out.println("\n=== Student Details ===");
+        s1.print();
+        s2.print();
+
+        // In thông tin giáo viên
+        System.out.println("\n=== Teacher Details ===");
+        gvcn.print();
+    }
+}

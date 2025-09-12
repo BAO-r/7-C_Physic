@@ -1,0 +1,78 @@
+package com.mycompany.man;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class phongf {
+
+    private int so;
+    private String loai;
+    private int gia;
+    private List<Man> list;
+
+    public phongf() {
+        list = new ArrayList<>();
+    }
+
+    public phongf(int so, String loai, int gia, List<Man> list) {
+        this.so = so;
+        this.loai = loai;
+        this.gia = gia;
+        this.list = list;
+    }
+
+    public int getSo() {
+        return so;
+    }
+
+    public void setSo(int so) {
+        this.so = so;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+
+    public int getGia() {
+        return gia;
+    }
+
+    public void setGia(int gia) {
+        this.gia = gia;
+    }
+
+    public List<Man> getList() {
+        return list;
+    }
+
+    public void setList(List<Man> list) {
+        this.list = list;
+    }
+
+    @Override
+    public String toString() {
+        return "Phong: " + "so=" + so + ", loai=" + loai + ", gia=" + gia + ", list=" + list;
+    }
+
+    public void nhap() {
+        System.out.print("so: ");
+        this.setSo(new Scanner(System.in).nextInt());
+        System.out.print("loai: ");
+        this.setLoai(new Scanner(System.in).nextLine());
+        System.out.print("gia: ");
+        this.setGia(new Scanner(System.in).nextInt());
+        System.out.print("Số người: ");
+        int n = new Scanner(System.in).nextInt();
+        Man nguoi = null;
+        for (int i = 0; i < n; i++) {
+            nguoi = new Man();
+            nguoi.nhap();
+            list.add(nguoi);
+        }
+    }
+}

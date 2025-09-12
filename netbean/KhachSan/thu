@@ -1,0 +1,10 @@
+package com.mycompany.man;
+
+public class thu {
+
+    public static void main(String[] args) {
+        hotel ks = new hotel();
+        ks.nhap();
+        ks.in();
+    }
+}

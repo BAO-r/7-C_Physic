@@ -1,0 +1,58 @@
+package com.mycompany.man;
+
+import java.util.Scanner;
+
+public class Man {
+
+    private String cccd;
+    private String hoTen;
+    private int tuoi;
+
+    public Man() {
+    }
+
+    public Man(String cccd, String hoTen, int tuoi) {
+        this.cccd = cccd;
+        this.hoTen = hoTen;
+        this.tuoi = tuoi;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public int getTuoi() {
+        return tuoi;
+    }
+
+    public void setTuoi(int tuoi) {
+        this.tuoi = tuoi;
+    }
+
+    @Override
+    public String toString() {
+        return "{Man:" + "cccd=" + cccd + ", hoTen=" + hoTen + ", tuoi=" + tuoi + '}';
+    }
+
+    public void nhap() {
+        System.out.print("cccd: ");
+        this.setCccd(new Scanner(System.in).nextLine());
+        System.out.print("ho ten: ");
+        this.setHoTen(new Scanner(System.in).nextLine());
+        System.out.print("tuoi: ");
+        this.setTuoi(new Scanner(System.in).nextInt());
+    }
+
+}

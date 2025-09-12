@@ -1,0 +1,35 @@
+package com.mycompany.man;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class hotel {
+
+    List<phongf> list;
+
+    public hotel() {
+        list = new ArrayList<>();
+    }
+
+    public hotel(List<phongf> list) {
+        this.list = list;
+    }
+
+    public void nhap() {
+        System.out.print("So phong: ");
+        int n = new Scanner(System.in).nextInt();
+        phongf phong = null;
+        for (int i = 0; i < n; i++) {
+            phong = new phongf();
+            phong.nhap();
+            list.add(phong);
+        }
+    }
+
+    public void in() {
+        for (phongf phong : list) {
+            System.out.println(phong);
+        }
+    }
+}
